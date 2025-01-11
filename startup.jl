@@ -20,6 +20,12 @@ catch e
     @warn "Error initializing Debugger" exception=(e, catch_backtrace())
 end
 
+try
+    import JuliaInterpreter as JI
+catch e
+    @warn "Error initializing JuliaInterpreter" exception=(e, catch_backtrace())
+end
+
 const mykeys = Dict{Any,Any}(
     "^O" => (s,o...)->(Terminals.clear(LineEdit.terminal(s)); LineEdit.refresh_line(s)),
 )
